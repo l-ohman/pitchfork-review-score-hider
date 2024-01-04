@@ -1,15 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "NYT Crossword Clue Hider",
-  "description": "Hides solved clues in the NYT crossword",
+  "name": "Pitchfork Score Hider",
+  "description": "Hides review scores on Pitchfork",
   "version": "0.0.1",
   "author": "l-ohman",
   "action": {},
   "icons": {
-    "16": "icons/inactive128.png",
-    "48": "icons/inactive128.png",
-    "128": "icons/inactive128.png"
+    "16": "sh128.png",
+    "32": "sh128.png",
+    "48": "sh128.png",
+    "128": "sh128.png"
   },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": [
+        "https://pitchfork.com/reviews/albums/*",
+        "https://pitchfork.com/reviews/tracks/*"
+      ]
+    }
+  ],
   "background": {
     "service_worker": "background.js"
   },
