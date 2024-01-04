@@ -6,14 +6,22 @@
   "author": "l-ohman",
   "action": {},
   "icons": {
-    "16": "sh128.png",
-    "32": "sh128.png",
-    "48": "sh128.png",
-    "128": "sh128.png"
+    "16": "icons/sh128.png",
+    "32": "icons/sh128.png",
+    "48": "icons/sh128.png",
+    "128": "icons/sh128.png"
   },
   "content_scripts": [
     {
-      "js": ["content.js"],
+      "js": ["scripts/init.js"],
+      "matches": [
+        "https://pitchfork.com/reviews/albums/*",
+        "https://pitchfork.com/reviews/tracks/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "js": ["scripts/content.js"],
       "matches": [
         "https://pitchfork.com/reviews/albums/*",
         "https://pitchfork.com/reviews/tracks/*"
@@ -21,8 +29,5 @@
       "run_at": "document_end"
     }
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "permissions": ["activeTab", "scripting"]
 }
