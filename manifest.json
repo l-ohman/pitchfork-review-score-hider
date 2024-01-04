@@ -17,7 +17,8 @@
       "matches": [
         "https://pitchfork.com/reviews/albums/*",
         "https://pitchfork.com/reviews/tracks/*"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ],
   "background": {
