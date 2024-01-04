@@ -6,10 +6,10 @@
   "author": "l-ohman",
   "action": {},
   "icons": {
-    "16": "icons/sh128.png",
-    "32": "icons/sh128.png",
-    "48": "icons/sh128.png",
-    "128": "icons/sh128.png"
+    "16": "icons/psh16.png",
+    "32": "icons/psh32.png",
+    "48": "icons/psh48.png",
+    "128": "icons/psh128.png"
   },
   "content_scripts": [
     {
