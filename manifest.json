@@ -14,18 +14,12 @@
   "content_scripts": [
     {
       "js": ["scripts/init.js"],
-      "matches": [
-        "https://pitchfork.com/reviews/albums/*",
-        "https://pitchfork.com/reviews/tracks/*"
-      ],
+      "matches": ["https://pitchfork.com/reviews/albums/*"],
       "run_at": "document_start"
     },
     {
       "js": ["scripts/content.js"],
-      "matches": [
-        "https://pitchfork.com/reviews/albums/*",
-        "https://pitchfork.com/reviews/tracks/*"
-      ],
+      "matches": ["https://pitchfork.com/reviews/albums/*"],
       "run_at": "document_end"
     }
   ],

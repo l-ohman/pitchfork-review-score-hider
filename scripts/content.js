@@ -1,12 +1,28 @@
 let originalScore = "?";
-let scoreVisible = false;
-
+let scoreVisible = true;
 let scoreElement = null;
 let reviewScoreContainer = null;
 
-main();
+function main() {
+  // Find score, cache its value, and replace it
+  parseHtmlForScore();
+  try {
+    originalScore = scoreElement.textContent;
+    reviewScoreContainer.style.cursor = "pointer";
 
-function setReviewScoreElement() {
+    toggleScoreVisibility();
+    reviewScoreContainer.onclick = toggleScoreVisibility;
+  } catch (error) {
+    console.log(
+      "\nPitchfork Score Hider Extension Error:\nNo score detected on this page.\n"
+    );
+    console.error(error);
+  }
+  // Reshow body regardless of try/catch (init.js hides everything during page load)
+  document.body.style.display = "block";
+}
+
+function parseHtmlForScore() {
   reviewScoreContainer = document.querySelector("[class^='ScoreCircle']");
   if (!reviewScoreContainer) return;
 
@@ -16,38 +32,13 @@ function setReviewScoreElement() {
   }
 }
 
-function hideScore() {
-  scoreElement.textContent = "—";
-}
-
-function showScore() {
-  scoreElement.textContent = originalScore;
-}
-
 function toggleScoreVisibility() {
-  debugMessage("Toggling score visibility");
   if (scoreVisible) {
-    hideScore();
+    scoreElement.textContent = "—";
   } else {
-    showScore();
+    scoreElement.textContent = originalScore;
   }
   scoreVisible = !scoreVisible;
 }
 
-function main() {
-  setReviewScoreElement();
-  if (scoreElement) {
-    originalScore = scoreElement.textContent;
-    reviewScoreContainer.style.cursor = "pointer";
-  } else {
-    debugMessage("Could not locate score element");
-  }
-  hideScore();
-  document.body.style.display = "block";
-  reviewScoreContainer.onclick = toggleScoreVisibility;
-}
-
-// Custom logger because Pitchfork's console is cluttered with errors/warnings
-function debugMessage(message) {
-  console.log(`\n——— Pitchfork Score Hider: ———\n${message}\n`);
-}
+main();
