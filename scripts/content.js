@@ -1,21 +1,18 @@
 let originalScore = "?";
 let scoreVisible = true;
-let scoreElement = null;
-let reviewScoreContainer = null;
+let scoreElement, reviewScoreContainer;
 
 function main() {
   // Find score, cache its value, and replace it
-  parseHtmlForScore();
   try {
+    parseHtmlForScore();
     originalScore = scoreElement.textContent;
     reviewScoreContainer.style.cursor = "pointer";
 
     toggleScoreVisibility();
     reviewScoreContainer.onclick = toggleScoreVisibility;
   } catch (error) {
-    console.log(
-      "\nPitchfork Score Hider Extension Error:\nNo score detected on this page.\n"
-    );
+    console.log("\nPitchfork Score Extension Error:\nNo score detected.\n");
     console.error(error);
   }
   // Reshow body regardless of try/catch (init.js hides everything during page load)
@@ -24,11 +21,8 @@ function main() {
 
 function parseHtmlForScore() {
   reviewScoreContainer = document.querySelector("[class^='ScoreCircle']");
-  if (!reviewScoreContainer) return;
-
-  const scoreParagraph = reviewScoreContainer.querySelector("p:first-child");
-  if (scoreParagraph) {
-    scoreElement = scoreParagraph;
+  if (reviewScoreContainer) {
+    scoreElement = reviewScoreContainer.querySelector("p:first-child");
   }
 }
 
