@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Pitchfork Score Hider",
-  "description": "Hides review scores on Pitchfork",
-  "version": "0.0.1",
+  "name": "Pitchfork Review Score Hider",
+  "description": "Hides review scores on Pitchfork by default and allows the user to toggle their visibility.",
+  "version": "1.0.0",
   "author": "l-ohman",
   "action": {},
   "icons": {
